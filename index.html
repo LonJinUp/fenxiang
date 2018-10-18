@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0；user-scalable=no">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" />
     <meta name="viewport" content="initial-scale=1">
     <title>底部栏</title>
     <link rel="stylesheet" href="css/base.css">
@@ -46,11 +46,11 @@
         z-index: 2;
     }
     .user_box{
-        display: block;
         float: left;
         width: 12%;
-        dispaly:flex;
+        display:flex;
         align-items:center;
+        margin-right: .1rem;
     }
     .user_box img{
         width: 0.8rem;
@@ -65,9 +65,10 @@
         width: 60%;
         height: 100%;
         position: relative;
+
     }
     .comments textarea{
-         font-size: 14px;
+        font-size: 14px;
         box-sizing: border-box;
         height: 100%;
         width: 100%;
@@ -129,7 +130,7 @@
         line-height: 0.666667rem;
         color: #888;
         text-align: center;
-        font-size: 30px;
+        font-size: 14px;
     }
     .btn_border{
         background: #f9f2e3;
@@ -138,50 +139,59 @@
     }
 </style>
 <body>
-    <div class="tab_bar">
-        <!--<div style="display: flex;width: 100%;a">-->
+<div class="tab_bar">
+    <!--<div style="display: flex;width: 100%;a">-->
 
-        <!--</div>-->
-        <!--用户头像 如果没有转到登陆页面-->
-        <a class="user_box" href="">
-            <img src="image/11111.gif" alt="">
-        </a>
-        <!--输入框-->
-        <div class="comments">
-            <textarea   rows="1" placeholder="我来说两句" maxlength="2000" class="reply-input"></textarea>
-        </div>
-        <!--右侧-->
-        <div class="tab_bar_right">
-            <div  class="comments_box com_focus">
-                <i class="iconfont">&#xe62c;</i>
-            </div>
-            <a href="" class="comments_box" style="margin-left: .5rem">
-                <i class="iconfont" style="font-size: .6rem">&#xe626;</i>
-            </a>
-        </div>
-
-        <div class="btn-box">
-            <div class="left_btn quxiao">取消</div>
-            <div class="right_btn btn_border">发布</div>
-        </div>
+    <!--</div>-->
+    <!--用户头像 如果没有转到登陆页面-->
+    <a class="user_box" href="">
+        <img src="image/11111.gif" alt="">
+    </a>
+    <!--输入框-->
+    <div class="comments">
+        <textarea   rows="1" placeholder="我来说两句" maxlength="2000" class="reply-input"></textarea>
     </div>
-    <!--遮罩-->
-    <div class="mask"></div>
+    <!--右侧-->
+    <div class="tab_bar_right">
+        <div  class="comments_box com_focus">
+            <i class="iconfont">&#xe62c;</i>
+        </div>
+        <a href="" class="comments_box" style="margin-left: .5rem">
+            <i class="iconfont" style="font-size: .6rem">&#xe626;</i>
+        </a>
+    </div>
+
+    <div class="btn-box">
+        <div class="left_btn quxiao">取消</div>
+        <div class="right_btn btn_border">发布</div>
+    </div>
+</div>
+<!--遮罩-->
+<div class="mask"></div>
 </body>
 
 <script src="js/jquery-3.1.1.min.js"></script>
 <script>
 
     $('.comments textarea,.com_focus').focus(function () {
-            $('.comments textarea').attr('rows','3');
-            $('.tab_bar_right').hide();
-            $('.comments').css('width','80%');
-            $('.tab_bar').css('align-items','stretch');
-            $('.mask').show();
-            $('.user_box').css('margin-top','.1rem');
-            $('.btn-box').css('display','block');
-            $('.tab_bar').css('display','block');
-
+        $('.comments textarea').attr('rows','3');
+        $('.tab_bar_right').hide();
+        $('.comments').css('width','80%');
+        $('.tab_bar').css('align-items','stretch');
+        $('.mask').show();
+        $('.user_box').css('margin-top','.1rem');
+        $('.btn-box').css('display','block');
+        $('.tab_bar').css('display','block');
+    });
+    $('.com_focus').click(function () {
+        $('.comments textarea').attr('rows','3');
+        $('.tab_bar_right').hide();
+        $('.comments').css('width','80%');
+        $('.tab_bar').css('align-items','stretch');
+        $('.mask').show();
+        $('.user_box').css('margin-top','.1rem');
+        $('.btn-box').css('display','block');
+        $('.tab_bar').css('display','block');
     });
     $(".quxiao,.mask").click(function(){
         console.log(1)
