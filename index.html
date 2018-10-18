@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>底部栏</title>
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/rem.js"></script>
+</head>
+<style>
+    @font-face {
+        font-family: 'iconfont';  /* project id 880012 */
+        src: url('//at.alicdn.com/t/font_880012_qwaizxdbx8i.eot');
+        src: url('//at.alicdn.com/t/font_880012_qwaizxdbx8i.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_880012_qwaizxdbx8i.woff') format('woff'),
+        url('//at.alicdn.com/t/font_880012_qwaizxdbx8i.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_880012_qwaizxdbx8i.svg#iconfont') format('svg');
+    }
+    .iconfont{
+        font-family:"iconfont" !important;
+        font-size:16px;font-style:normal;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-stroke-width: 0.2px;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .tab_bar{
+        width: 100%;
+        position: fixed;
+        bottom:0;
+        background: #f2f2f2;
+        box-sizing: border-box;
+        padding: 0 0.453333rem 0 0.266667rem;
+        overflow: hidden;
+
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        align-items: center;
+        -webkit-box-sizing: border-box;
+        z-index: 2;
+    }
+    .user_box{
+        display: block;
+        float: left;
+        width: 12%;
+    }
+    .user_box img{
+        width: 0.8rem;
+        height: 0.8rem;
+        border: 1px solid #e2e2e2;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .comments{
+        float: left;
+        margin-top: 0.053333rem;
+        width: 60%;
+        height: 100%;
+        font-size: 30px;
+        position: relative;
+    }
+    .comments textarea{
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        border-radius: 0.053333rem;
+        border: 1px solid #e2e2e2;
+        background: #fff;
+        padding: 0.133333rem 0 0.133333rem 0.2rem;
+        line-height: 0.533333rem;
+        -webkit-appearance: none;
+    }
+    .comments textarea:focus {
+        outline:none;
+    }
+    .tab_bar_right{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        align-items: center;
+        display: flex;
+        margin-left: 0.453333rem;
+
+    }
+    .comments_box{
+
+    }
+    .comments_box i{
+        font-size: .7rem;
+        width: 0.533333rem;
+        height: 0.533333rem;
+        color: #2f3541;
+        vertical-align: middle;
+    }
+    .mask{
+        display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 1;
+    }
+    .btn-box{
+        display: none;
+        width: 92%;
+        float: left;
+        text-align: right;
+        margin-top: 0.186667rem;
+        margin-bottom: 0.186667rem;
+        /*position: absolute;*/
+        /*bottom: 0;*/
+    }
+    .left_btn,.right_btn{
+        display: inline-block;
+        width: 1.333333rem;
+        height: 0.666667rem;
+        line-height: 0.666667rem;
+        color: #888;
+        text-align: center;
+        font-size: 30px;
+    }
+    .btn_border{
+        background: #f9f2e3;
+        border: 1px solid #fae2af;
+        border-radius: 0.053333rem;
+    }
+</style>
+<body>
+    <div class="tab_bar">
+        <!--<div style="display: flex;width: 100%;a">-->
+
+        <!--</div>-->
+        <!--用户头像 如果没有转到登陆页面-->
+        <a class="user_box" href="">
+            <img src="image/11111.gif" alt="">
+        </a>
+        <!--输入框-->
+        <div class="comments">
+            <textarea   rows="1" placeholder="我来说两句" maxlength="2000" class="reply-input"></textarea>
+        </div>
+        <!--右侧-->
+        <div class="tab_bar_right">
+            <a href="" class="comments_box com_focus">
+                <i class="iconfont">&#xe62c;</i>
+            </a>
+            <a href="" class="comments_box" style="margin-left: .5rem">
+                <i class="iconfont" style="font-size: .6rem">&#xe626;</i>
+            </a>
+        </div>
+
+        <div class="btn-box">
+            <div class="left_btn quxiao">取消</div>
+            <div class="right_btn btn_border">发布</div>
+        </div>
+    </div>
+    <!--遮罩-->
+    <div class="mask"></div>
+</body>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+
+    $('.comments textarea,.com_focus').focus(function () {
+            $('.comments textarea').attr('rows','3');
+            $('.tab_bar_right').hide();
+            $('.comments').css('width','80%');
+            $('.tab_bar').css('align-items','stretch');
+            $('.mask').show();
+            $('.user_box').css('margin-top','.1rem');
+            $('.btn-box').css('display','block');
+            $('.tab_bar').css('display','block');
+
+    });
+    $(".quxiao,.mask").click(function(){
+        console.log(1)
+        $('.comments textarea').attr('rows','1');
+        $('.tab_bar_right').show();
+        $('.comments').css('width','60%');
+        $('.tab_bar').css('align-items','center');
+        $('.mask').hide();
+        $('.user_box').css('margin-top','0');
+        $('.btn-box').css('display','none');
+        $('.tab_bar').css('display','flex');
+    })
+
+
+
+</script>
+</html>
