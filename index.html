@@ -174,8 +174,8 @@
 
 <script src="js/jquery-3.1.1.min.js"></script>
 <script>
-
-    $('.comments textarea,.com_focus').focus(function () {
+    // tabbar弹出
+    function text_focus(){
         $('.comments textarea').attr('rows','3');
         $('.tab_bar_right').hide();
         $('.comments').css('width','80%');
@@ -184,19 +184,10 @@
         $('.user_box').css('margin-top','.1rem');
         $('.btn-box').css('display','block');
         $('.tab_bar').css('display','block');
-    });
-    $('.com_focus').click(function () {
-        $('.comments textarea').attr('rows','3');
-        $('.tab_bar_right').hide();
-        $('.comments').css('width','80%');
-        $('.tab_bar').css('align-items','stretch');
-        $('.mask').show();
-        $('.user_box').css('margin-top','.1rem');
-        $('.btn-box').css('display','block');
-        $('.tab_bar').css('display','block');
-    });
-    $(".quxiao,.mask").click(function(){
-        console.log(1)
+    }
+    
+    //tabbar返回
+    function text_fanhui(){
         $('.comments textarea').attr('rows','1');
         $('.tab_bar_right').show();
         $('.comments').css('width','60%');
@@ -205,6 +196,16 @@
         $('.user_box').css('margin-top','0');
         $('.btn-box').css('display','none');
         $('.tab_bar').css('display','flex');
+    }
+
+    $('.comments textarea,.com_focus').focus(function () {
+       text_focus();
+    });
+    $('.com_focus').click(function () {
+        text_focus()
+    });
+    $(".quxiao,.mask").click(function(){
+       text_fanhui();
     })
 
 
